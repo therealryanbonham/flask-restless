@@ -1141,7 +1141,7 @@ class API(ModelView):
             return dict(message='Unable to decode data'), 400
 
         for preprocessor in self.preprocessors['GET_MANY']:
-            preprocessor(search_params=search_params)
+            preprocessor(search_params=search_params, model=self.model)
 
         # resolve date-strings as required by the model
         for param in search_params.get('filters', list()):
